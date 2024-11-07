@@ -39,10 +39,6 @@ if [[ -f "$WEB_ROOT/composer.json" ]]; then
   cd $WEB_ROOT && composer install
 fi
 
-#== Install drush locally
-echo "Install drush locally ..."
-composer require drush/drush
-
 
 cd $WEB_ROOT && git submodule update --init --recursive
 
@@ -63,7 +59,7 @@ sudo sed -i -e "s/^\$settings\['hash_salt'\].*/\$settings\['hash_salt'\] = '$DRU
 [[ ! -d $STATIC_FILES_PATH ]] && sudo mkdir --mode 775 $STATIC_FILES_PATH || sudo chmod 775 -R $STATIC_FILES_PATH
 
 #== Extract static files
-if [[ $(drush status bootstrap) == '' ]]; then
+if [[ $(drush status --field=bootstrap) == '' ]]; then
   if [[ -f "$APP_ROOT/.devpanel/dumps/files.tgz" ]]; then
     echo  'Extract static files ...'
     sudo mkdir -p $STATIC_FILES_PATH
