@@ -290,7 +290,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = '6d75027c15e88bcef977e0f730add5ba463e497cbf9bee380dca9d4fbd57bdf1';
 
 /**
  * Deployment identifier.
@@ -771,11 +771,6 @@ $databases['default']['default'] = [
   'collation' => 'utf8mb4_general_ci',
 ];
 
- $settings['config_sync_directory'] = '../config/sync/'
-
-$settings['trusted_host_patterns'] = [
-
-];
 
 /**
  * Load local development override configuration, if available.
@@ -791,6 +786,6 @@ $settings['trusted_host_patterns'] = [
  * Keep this code block at the end of this file to take full effect.
  */
 #
-// if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-//   include $app_root . '/' . $site_path . '/settings.local.php';
-// }
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
