@@ -15,13 +15,13 @@
 # For GNU Affero General Public License see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-STATIC_FILES_PATH="$WEB_ROOT/sites/default/files"
-SETTINGS_FILES_PATH="$WEB_ROOT/sites/default/settings.php"
-
 #== If webRoot has not been difined, we will set appRoot to webRoot
 if [[ ! -n "$WEB_ROOT" ]]; then
   export WEB_ROOT=$APP_ROOT
 fi
+
+STATIC_FILES_PATH="$WEB_ROOT/sites/default/files"
+SETTINGS_FILES_PATH="$WEB_ROOT/sites/default/settings.php"
 
 #== Composer install.
 if [[ -f "$APP_ROOT/composer.json" ]]; then
@@ -33,8 +33,6 @@ fi
 #== Install drush locally
 echo "Install drush locally ..."
 composer require --dev drush/drush
-
-
 
 cd $WEB_ROOT && git submodule update --init --recursive
 
