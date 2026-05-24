@@ -13,7 +13,6 @@ rm -rf ${PROJECT#*/}
 
 # Scaffold patches and settings.php.
 composer config -jm extra.drupal-scaffold.file-mapping '{
-    "patches/README.md": false,
     "[web-root]/sites/default/settings.php": {
         "path": "web/core/assets/scaffold/files/default.settings.php",
         "overwrite": false
