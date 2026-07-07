@@ -30,4 +30,5 @@ web_environment:
     - DP_APP_ID=umami
     - DB_DRIVER=mysql
     - COMPOSER_HOME=/home/www/.config/composer
+    - DP_AI_VIRTUAL_KEY=
 corepack_enable: false

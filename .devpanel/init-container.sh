@@ -1,6 +1,6 @@
 #!/bin/bash
 # ---------------------------------------------------------------------
-# Copyright (C) 2025 DevPanel
+# Copyright (C) 2026 DevPanel
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
@@ -15,6 +15,7 @@
 # For GNU Affero General Public License see <https://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+export PATH="$APP_ROOT/vendor/bin:$PATH"
 cd $APP_ROOT
 
 #== Import database
@@ -42,9 +43,14 @@ fi
 drush -n updb
 echo
 echo 'Run cron.'
-drush cron
+dr cron
 echo
 echo 'Populate caches.'
 drush cache:warm &> /dev/null || :
 .devpanel/warm
 .devpanel/warm /user/login
+
+#== Fix ownership for strict permissions.
+echo
+echo 'Fix ownership for strict permissions.'
+time sudo chown -R ${APACHE_RUN_USER:=www-data} web/sites/default/files private config/sync

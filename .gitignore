@@ -8,9 +8,7 @@
 /LICENSE*
 /logs/*
 !/logs/.gitkeep
-/patches.lock.json
 /private/
-/README*
 /recipes/
 /vendor/
 /web/
